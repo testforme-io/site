@@ -28,9 +28,9 @@ jobs:
           yarn build
       - name: deploy
         if: ${{ github.event_name == 'push' }}
-        uses: peaceiris/actions-gh-pages@v2.5.0
-        env:
-          PERSONAL_TOKEN: ${{ secrets.TOKEN }}
-          EXTERNAL_REPOSITORY: testforme-io/testforme.github.io
-          PUBLISH_BRANCH: main
-          PUBLISH_DIR: ./public
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          external_repository: testforme-io/site-generated
+          publish_branch: main
